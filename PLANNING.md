@@ -5,6 +5,8 @@ Una libreria Python (con CLI minimale) che aiuta a ridurre token e costi delle c
 senza peggiorare la qualità delle risposte. Ogni funzionalità deve poter mostrare un risparmio misurato.
 
 ## Ambito
+Il progetto ha due parti: la libreria per l'uso via API e `GUIDA_CHAT.md` per chi usa Claude in chat con abbonamento (limiti di utilizzo, non costo a token).
+
 **Dentro:**
 - Conteggio token accurato via API (`messages.count_tokens`).
 - Calcolo del costo di una richiesta/risposta a partire da `response.usage`.

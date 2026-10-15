@@ -23,7 +23,8 @@
 ### Fase 4 – Validazione (2026-10-15)
 - [ ] Raccogliere prompt di esempio in `examples/`
 - [ ] Benchmark del risparmio per tecnica (da lanciare solo su richiesta: usa l'API reale)
-- [ ] Aggiornare `README.md` con setup, uso e risparmi misurati
+- [x] Aggiornare `README.md` con setup e uso (2026-10-15)
+- [ ] Aggiungere al README i risparmi misurati
 
 ## Completati
 - [x] Installare il template context-engineering-intro (2026-10-15)
@@ -32,7 +33,7 @@
 
 ## Scoperti durante il lavoro
 - [x] `cli.py` minimale con comando `config` (serve all'entry point del pacchetto) (2026-10-15)
-- [ ] Aggiungere al README le istruzioni di setup (`.venv`, `pip install -e ".[dev]"`, `.env`) (2026-10-15)
+- [x] Aggiungere al README le istruzioni di setup (`.venv`, `pip install -e ".[dev]"`, `.env`) (2026-10-15)
 - [x] Comando `diff` per confrontare due versioni di un prompt (2026-10-15)
 - [ ] Verificare `count`/`diff` contro l'API reale (count_tokens è gratuito, serve una chiave) (2026-10-15)
 - [ ] Ricontrollare periodicamente i prezzi in `pricing.py` (ultimo aggiornamento 2026-10-15) (2026-10-15)
@@ -40,3 +41,4 @@
 - [x] Comandi `compress`, `cache-check`, `batch-submit`, `batch-results`, `compare`; quelli a pagamento richiedono `--yes` (2026-10-15)
 - [ ] Verificare `batch-*` e `compare` con l'API reale (a pagamento, solo su richiesta) (2026-10-15)
 - [ ] Valutare tecniche di compressione più aggressive (es. riassunto con Haiku) con eval di qualità (2026-10-15)
+- [x] `GUIDA_CHAT.md`: guida per consumare meno nelle chat normali (claude.ai/app) (2026-10-15)
