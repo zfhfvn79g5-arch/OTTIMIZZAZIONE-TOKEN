@@ -42,3 +42,4 @@
 - [ ] Verificare `batch-*` e `compare` con l'API reale (a pagamento, solo su richiesta) (2026-10-15)
 - [ ] Valutare tecniche di compressione più aggressive (es. riassunto con Haiku) con eval di qualità (2026-10-15)
 - [x] `GUIDA_CHAT.md`: guida per consumare meno nelle chat normali (claude.ai/app) (2026-10-15)
+- [x] Skill `risparmio-token` per claude.ai (cartella + zip in `skills/`) (2026-10-15)

@@ -44,6 +44,13 @@ Se la richiesta è ambigua, fai una sola domanda di chiarimento prima di rispond
 
 Puoi anche scegliere lo **stile di risposta conciso** dal menu degli stili, quando disponibile.
 
+## Skill "risparmio-token"
+
+In [`skills/risparmio-token/`](skills/risparmio-token/SKILL.md) c'è una skill che fa applicare a Claude
+queste regole da solo quando la chat si allunga o chiedi di risparmiare. Si carica su claude.ai
+(piani a pagamento) caricando il file `skills/risparmio-token.zip` dalla sezione Skills delle impostazioni.
+Non è sempre attiva: per le regole valide in ogni chat usa le preferenze qui sopra.
+
 ## Modelli di prompt efficienti
 
 **Richiesta completa in un colpo solo**
