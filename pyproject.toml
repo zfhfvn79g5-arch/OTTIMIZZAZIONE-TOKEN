@@ -37,3 +37,7 @@ target-version = "py310"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.flake8-bugbear]
+# Motivo: typer usa Option/Argument come default dei parametri per design.
+extend-immutable-calls = ["typer.Argument", "typer.Option"]

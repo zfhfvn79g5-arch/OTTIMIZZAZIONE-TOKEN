@@ -9,10 +9,10 @@
 - [x] `client.py`: wrapper attorno all'SDK `anthropic`
 
 ### Fase 2 – Misura (2026-10-15)
-- [ ] `counting.py`: conteggio token con `messages.count_tokens`
-- [ ] `pricing.py`: tabella prezzi con data di aggiornamento + costo da `response.usage` (incluse letture/scritture cache)
-- [ ] `report.py`: confronto prima/dopo (token, costo, risparmio %)
-- [ ] `cli.py`: comandi `count` e `cost`
+- [x] `counting.py`: conteggio token con `messages.count_tokens`
+- [x] `pricing.py`: tabella prezzi con data di aggiornamento + costo da `response.usage` (incluse letture/scritture cache)
+- [x] `report.py`: confronto prima/dopo (token, costo, risparmio %)
+- [x] `cli.py`: comandi `count` e `cost`
 
 ### Fase 3 – Ottimizzazione (2026-10-15)
 - [ ] `compression.py`: prime tecniche di riduzione del prompt, con test che il risultato sia più corto
@@ -33,3 +33,6 @@
 ## Scoperti durante il lavoro
 - [x] `cli.py` minimale con comando `config` (serve all'entry point del pacchetto) (2026-10-15)
 - [ ] Aggiungere al README le istruzioni di setup (`.venv`, `pip install -e ".[dev]"`, `.env`) (2026-10-15)
+- [x] Comando `diff` per confrontare due versioni di un prompt (2026-10-15)
+- [ ] Verificare `count`/`diff` contro l'API reale (count_tokens è gratuito, serve una chiave) (2026-10-15)
+- [ ] Ricontrollare periodicamente i prezzi in `pricing.py` (ultimo aggiornamento 2026-10-15) (2026-10-15)
