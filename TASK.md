@@ -15,10 +15,10 @@
 - [x] `cli.py`: comandi `count` e `cost`
 
 ### Fase 3 – Ottimizzazione (2026-10-15)
-- [ ] `compression.py`: prime tecniche di riduzione del prompt, con test che il risultato sia più corto
-- [ ] `caching.py`: helper `cache_control` + verifica `cache_read_input_tokens`
-- [ ] `batching.py`: invio e lettura risultati con Message Batches API
-- [ ] Confronto modelli/effort sullo stesso input (`cli.py compare`)
+- [x] `compression.py`: prime tecniche di riduzione del prompt, con test che il risultato sia più corto
+- [x] `caching.py`: helper `cache_control` + verifica `cache_read_input_tokens`
+- [x] `batching.py`: invio e lettura risultati con Message Batches API
+- [x] Confronto modelli/effort sullo stesso input (`cli.py compare`)
 
 ### Fase 4 – Validazione (2026-10-15)
 - [ ] Raccogliere prompt di esempio in `examples/`
@@ -36,3 +36,7 @@
 - [x] Comando `diff` per confrontare due versioni di un prompt (2026-10-15)
 - [ ] Verificare `count`/`diff` contro l'API reale (count_tokens è gratuito, serve una chiave) (2026-10-15)
 - [ ] Ricontrollare periodicamente i prezzi in `pricing.py` (ultimo aggiornamento 2026-10-15) (2026-10-15)
+- [x] Modulo `benchmark.py` per il confronto modelli/effort (2026-10-15)
+- [x] Comandi `compress`, `cache-check`, `batch-submit`, `batch-results`, `compare`; quelli a pagamento richiedono `--yes` (2026-10-15)
+- [ ] Verificare `batch-*` e `compare` con l'API reale (a pagamento, solo su richiesta) (2026-10-15)
+- [ ] Valutare tecniche di compressione più aggressive (es. riassunto con Haiku) con eval di qualità (2026-10-15)

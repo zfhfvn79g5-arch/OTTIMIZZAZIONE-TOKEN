@@ -64,3 +64,79 @@ def test_diff(mocker, tmp_path):
     result = runner.invoke(app, ["diff", str(a), str(b)])
     assert result.exit_code == 0
     assert "400 token (40.0%)" in result.output
+
+
+def test_compress_su_file(tmp_path):
+    f, out = tmp_path / "p.txt", tmp_path / "out.txt"
+    f.write_text("A    b\n\n\n\nC d\n")
+    result = runner.invoke(app, ["compress", str(f), "-o", str(out)])
+    assert result.exit_code == 0
+    assert out.read_text() == "A b\n\nC d"
+
+
+def test_compress_con_conteggio(mocker, tmp_path):
+    _mock_client(mocker, 100, 80)
+    f = tmp_path / "p.txt"
+    f.write_text("A    b")
+    result = runner.invoke(app, ["compress", str(f), "--count"])
+    assert result.exit_code == 0
+    assert "20 token (20.0%)" in result.output
+
+
+def test_cache_check_segnala_problemi(mocker, tmp_path):
+    _mock_client(mocker, 100)
+    f = tmp_path / "system.txt"
+    f.write_text("Data: 2026-10-15 10:00")
+    result = runner.invoke(app, ["cache-check", str(f), "-m", "claude-opus-5-5"])
+    assert result.exit_code == 1
+    assert "sotto la soglia" in result.output
+    assert "data/ora" in result.output
+
+
+def test_cache_check_ok(mocker, tmp_path):
+    _mock_client(mocker, 5000)
+    f = tmp_path / "system.txt"
+    f.write_text("Istruzioni stabili")
+    result = runner.invoke(app, ["cache-check", str(f), "-m", "claude-opus-5-5"])
+    assert result.exit_code == 0
+
+
+def test_comandi_a_pagamento_richiedono_yes(mocker, tmp_path):
+    build = mocker.patch("ottimizzazione_token.cli.build_client")
+    f = tmp_path / "p.txt"
+    f.write_text('{"custom_id": "a", "prompt": "x"}\n')
+    for args in (["batch-submit", str(f)], ["compare", str(f), "-m", "claude-opus-5-5"]):
+        result = runner.invoke(app, args)
+        assert result.exit_code == 1
+        assert "--yes" in result.output
+    build.assert_not_called()
+
+
+def test_batch_submit_custom_id_duplicato(mocker, tmp_path):
+    mocker.patch("ottimizzazione_token.cli.build_client")
+    f = tmp_path / "p.jsonl"
+    f.write_text('{"custom_id": "a", "prompt": "x"}\n{"custom_id": "a", "prompt": "y"}\n')
+    result = runner.invoke(app, ["batch-submit", str(f), "--yes"])
+    assert result.exit_code == 1
+    assert "duplicato" in result.output
+
+
+def test_batch_submit(mocker, tmp_path):
+    client = mocker.Mock()
+    client.messages.batches.create.return_value = mocker.Mock(id="batch_9")
+    mocker.patch("ottimizzazione_token.cli.build_client", return_value=client)
+    f = tmp_path / "p.jsonl"
+    f.write_text('{"custom_id": "a", "prompt": "x"}\n\n{"custom_id": "b", "prompt": "y"}\n')
+    result = runner.invoke(app, ["batch-submit", str(f), "--yes"])
+    assert result.exit_code == 0
+    assert "batch_9 (2 richieste)" in result.output
+
+
+def test_batch_results_in_corso(mocker):
+    client = mocker.Mock()
+    client.messages.batches.retrieve.return_value = mocker.Mock(processing_status="in_progress")
+    mocker.patch("ottimizzazione_token.cli.build_client", return_value=client)
+    result = runner.invoke(app, ["batch-results", "batch_1"])
+    assert result.exit_code == 0
+    assert "in corso" in result.output
+    client.messages.batches.results.assert_not_called()

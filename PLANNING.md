@@ -29,7 +29,9 @@ src/ottimizzazione_token/
 ├── caching.py       # Helper per cache_control e verifica cache_read_input_tokens
 ├── batching.py      # Creazione, polling e lettura risultati dei batch
 ├── report.py        # Confronto prima/dopo: token, costo, risparmio %
-└── cli.py           # Comandi: count, cost, compress, compare
+├── benchmark.py     # Stesso prompt su più modelli/effort: costo e risposta
+└── cli.py           # Comandi: config, count, cost, diff, compress, cache-check,
+                     #          batch-submit, batch-results, compare
 tests/               # Rispecchia src/, con mock dell'SDK
 examples/            # Prompt e richieste di esempio per test e benchmark
 ```
