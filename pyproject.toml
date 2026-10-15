@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ottimizzazione-token"
+version = "0.1.0"
+description = "Strumenti per misurare e ridurre token e costi delle chiamate a Claude."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "anthropic",
+    "pydantic>=2",
+    "pydantic-settings>=2",
+    "python-dotenv",
+    "typer",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-mock", "black", "ruff"]
+
+[project.scripts]
+ottimizzazione-token = "ottimizzazione_token.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ottimizzazione_token"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.black]
+line-length = 100
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

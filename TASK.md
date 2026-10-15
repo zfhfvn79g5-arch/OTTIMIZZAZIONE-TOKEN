@@ -3,10 +3,10 @@
 ## Da fare
 
 ### Fase 1 – Fondamenta (2026-10-15)
-- [ ] Creare `pyproject.toml`, struttura `src/ottimizzazione_token/` e `tests/`
-- [ ] Aggiungere `.env.example` e `.env` al `.gitignore`
-- [ ] `config.py`: settings pydantic (API key, modello di default)
-- [ ] `client.py`: wrapper attorno all'SDK `anthropic`
+- [x] Creare `pyproject.toml`, struttura `src/ottimizzazione_token/` e `tests/`
+- [x] Aggiungere `.env.example` e `.env` al `.gitignore`
+- [x] `config.py`: settings pydantic (API key, modello di default)
+- [x] `client.py`: wrapper attorno all'SDK `anthropic`
 
 ### Fase 2 – Misura (2026-10-15)
 - [ ] `counting.py`: conteggio token con `messages.count_tokens`
@@ -31,3 +31,5 @@
 - [x] Creare `PLANNING.md` e `TASK.md` (2026-10-15)
 
 ## Scoperti durante il lavoro
+- [x] `cli.py` minimale con comando `config` (serve all'entry point del pacchetto) (2026-10-15)
+- [ ] Aggiungere al README le istruzioni di setup (`.venv`, `pip install -e ".[dev]"`, `.env`) (2026-10-15)
